@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الدليل الشامل: تحويل كتب الـ PDF العربية إلى كيندل EPUB3 باحترافية</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #14b8a6;
+      --primary-bg: #f0fdfa;
+      --accent-gold: #c28833;
+      --accent-gold-light: #fef3c7;
+      --accent-gold-dark: #92400e;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-focus: #0f766e;
+      --danger: #ef4444;
+      --danger-bg: #fef2f2;
+      --success: #10b981;
+      --success-bg: #ecfdf5;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 16px;
+      padding-bottom: 80px;
+    }
+
+    /* Top Banner / Navbar */
+    .top-header {
+      background: linear-gradient(135deg, #094b46 0%, #0f766e 60%, #134e4a 100%);
+      color: white;
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .top-header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .top-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .top-header p {
+      font-size: 1.15rem;
+      color: #ccfbf1;
+      max-width: 780px;
+      margin: 0 auto 24px;
+      font-weight: 400;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1060px;
+      margin: -25px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Sticky Quick Nav */
+    .quick-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-bg);
+      color: var(--primary);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary-bg);
+    }
+
+    .section-title .icon-box {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-bg);
+      color: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* Friendly Metaphor Box */
+    .metaphor-box {
+      background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 100%);
+      border: 1px solid #99f6e4;
+      border-radius: 14px;
+      padding: 22px;
+      margin: 20px 0;
+    }
+
+    .metaphor-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+    }
+
+    /* Comparison Grid (Right vs Wrong / PDF vs EPUB) */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .comparison-card {
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-card.bad {
+      background: #fff5f5;
+      border-color: #fecaca;
+    }
+
+    .comparison-card.bad .card-header {
+      color: #b91c1c;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-card.good {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .comparison-card.good .card-header {
+      color: #15803d;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Steps List */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(15, 118, 110, 0.3);
+    }
+
+    .step-content {
+      flex: 1;
+      background: #fbfcfd;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .step-content h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    /* Code & Prompt Boxes */
+    .code-block {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      position: relative;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.92rem;
+      direction: ltr;
+      text-align: left;
+      overflow-x: auto;
+      border: 1px solid #334155;
+    }
+
+    .code-block.arabic-text {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.98rem;
+      line-height: 1.9;
+      white-space: pre-wrap;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #334155;
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+    }
+
+    .code-tag {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .copy-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--success) !important;
+    }
+
+    /* Master Prompt Container (Special Glamour) */
+    .prompt-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+      border: 2px solid #6366f1;
+      border-radius: 18px;
+      padding: 28px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+      position: relative;
+    }
+
+    .prompt-hero-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .prompt-badge {
+      background: #4f46e5;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .prompt-copy-btn-large {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .prompt-copy-btn-large:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Alerts */
+    .alert {
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      line-height: 1.7;
+    }
+
+    .alert-warning {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+    }
+
+    .alert-info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+    }
+
+    .alert-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+
+    .alert-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: -2px;
+    }
+
+    /* Accordion / FAQ */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .faq-question {
+      padding: 18px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover {
+      background: #f1f5f9;
+    }
+
+    .faq-answer {
+      padding: 20px 22px;
+      display: none;
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-toggle {
+      transition: transform 0.2s;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Table styling */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+
+    .styled-table th, .styled-table td {
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      text-align: right;
+    }
+
+    .styled-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+    }
+
+    .styled-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Floating Download Pill */
+    .download-card {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 2px dashed #f59e0b;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="top-header">
+    <div class="badge-pill">
+      <span>📖 الدليل الحصري والمبسط للمبتدئين</span>
+    </div>
+    <h1>تحويل كتب الـ PDF المصورة إلى كيندل EPUB3</h1>
+    <p>دليل إرشادي من الصفر تماماً خطوة بخطوة؛ يحول كتابك المصور إلى كتاب إلكتروني سائل فائق الجودة يدعم الوضع الليلي، وتكبير الخط، والحواشي المنبثقة التفاعلية بنقرة واحدة، دون الحاجة لأي خبرة برمجية.</p>
+  </header>
+
+  <!-- Sticky Nav -->
+  <div class="container">
+    <nav class="quick-nav">
+      <a href="#concepts" class="nav-btn">💡 الفكرة ببساطة</a>
+      <a href="#prerequisites" class="nav-btn">💻 التثبيت (من الصفر)</a>
+      <a href="#subscriptions-and-limits" class="nav-btn">💳 الاشتراكات وتكلفة الكتب</a>
+      <a href="#folder-setup" class="nav-btn">📁 تجهيز المجلد والمهارة</a>
+      <a href="#master-prompt" class="nav-btn">✨ البرومبت الذهبي</a>
+      <a href="#how-it-works" class="nav-btn">⚙️ أثناء التحويل</a>
+      <a href="#send-to-kindle" class="nav-btn">📲 النقل لكيندل</a>
+      <a href="#faq" class="nav-btn">❓ حل المشاكل</a>
+    </nav>
+
+    <!-- SECTION 1: CONCEPTS -->
+    <section id="concepts" class="card">
+      <div class="section-title">
+        <div class="icon-box">💡</div>
+        <h2>أولاً: ما القصة؟ افهم الفكرة ببساطة وبدون تعقيد</h2>
+      </div>
+
+      <p>إذا كنت تقرأ كتب الـ PDF العربية على هاتفك أو جهاز كيندل، فأنت تعرف المعاناة بالتأكيد:</p>
+      
+      <div class="comparison-grid">
+        <div class="comparison-card bad">
+          <div class="card-header">
+            <span>❌ ملف الـ PDF التقليدي (المصور)</span>
+          </div>
+          <ul>
+            <li>مجرد صور لصفحات مطبوعة لا يمكن تكبير خطها.</li>
+            <li>تحتاج للتكبير بالسحب يميناً ويساراً مع كل سطر مما يجهد العين جداً.</li>
+            <li>لا يدعم الوضع الليلي الحقيقي (الصفحة تظل بيضاء فاقعة تؤذي العين).</li>
+            <li>الحواشي السفلية تتطلب منك النزول لأسفل الصفحة ثم البحث أين كنت تقرأ في المتن.</li>
+          </ul>
+        </div>
+
+        <div class="comparison-card good">
+          <div class="card-header">
+            <span>✅ كتاب كيندل السائل (EPUB3)</span>
+          </div>
+          <ul>
+            <li>نص حقيقي سائل يتدفق ويتكيف تلقائياً مع أي حجم شاشة كيندل أو هاتف.</li>
+            <li>تكبر الخط أو تصغره وتغير نوع الخط ولونه بكل راحة.</li>
+            <li>يدعم الوضع الليلي الكامل (شاشة سوداء وكتابة بيضاء هادئة).</li>
+            <li><strong>حواشي منبثقة تفاعلية:</strong> بمجرد لمس رقم الحاشية تنبثق لك نافذة أنيقة تقرأ منها الشرح ثم تغلقها وتكمل قراءتك في نفس الموضع!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="metaphor-box">
+        <div class="metaphor-title">
+          <span>🧑‍💻 ما هو "الوكيل الذكي" و"المهارة"؟ (تشبيه من الحياة الواقعية)</span>
+        </div>
+        <p>تخيل أنك استأجرت <strong>موظفاً عبقرياً وسريعاً جداً</strong> اسمه (الوكيل الذكي - AI Agent). هذا الموظف يجلس أمام حاسوبك، يفتح صفحات كتابك واحدة تلو الأخرى، يقرأ الكلمات بدقة بالغة بعينه، ويكتبها وينسقها ويفحص الأخطاء بنفسه دون أن تفعل أنت شيئاً!</p>
+        <p style="margin-top: 10px;">أما <strong>المهارة (Skill)</strong>: فهي "كتيب التعليمات الصارم" الذي نسلمه لهذا الموظف حتى نقول له: <em>«إياك أن تخطئ في تشكيل الآيات القرآنية، لا تجعل المشجرات تسقط في كيندل، اجعل الحواشي تنبثق بنقرة، وقسم الكتاب إلى أجزاء ذكية دون توقف»</em>.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PREREQUISITES -->
+    <section id="prerequisites" class="card">
+      <div class="section-title">
+        <div class="icon-box">💻</div>
+        <h2>ثانياً: تجهيز الأدوات من الصفر على ويندوز (مرة واحدة فقط)</h2>
+      </div>
+
+      <p>لا تفترض أن لديك أي برامج جاهزة. سنقوم بتثبيت الأدوات الأساسية في 5 دقائق فقط وبكل وضوح:</p>
+
+      <div class="steps-container">
+        <!-- Step 1: Python -->
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>تثبيت لغة بايثون (Python) — أهم خطوة على الإطلاق!</h3>
+            <p>بايثون هو المحرك الصغير الذي يستخدمه المساعد لتجميع ملفات الكتاب وفحص سلامتها البرمجية.</p>
+            <p style="margin: 8px 0;">اذهب للموقع الرسمي وحمّل أحدث نسخة لويندوز: <a href="https://www.python.org/downloads/" target="_blank" style="color: var(--primary); font-weight: 700;">تحميل بايثون من الموقع الرسمي python.org</a></p>
+            
+            <div class="alert alert-warning">
+              <div class="alert-icon">⚠️</div>
+              <div>
+                <strong>تنبيه مصيري وحاسم عند التثبيت:</strong><br>
+                أول شاشة تظهر لك عند فتح برنامج تثبيت بايثون، ستجد في أسفلها مربعاً صغيراً مكتوباً بجواره:<br>
+                <code style="background: #fed7aa; padding: 2px 8px; border-radius: 4px; font-weight: bold; color: #7c2d12;">Add python.exe to PATH</code><br>
+                <strong>يجب وضع علامة (✓) في هذا المربع</strong> قبل الضغط على <em>Install Now</em>! هذا هو الخطأ رقم 1 الذي يقع فيه المبتدئون ويجعل الحاسوب يقول لاحقاً «لم أجد بايثون».
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Running Environment (Google Antigravity) -->
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>تحميل وتثبيت برنامج العمل: Google Antigravity (المساعد الذكي)</h3>
+            <p>الوكيل الذكي يحتاج "برنامج عمل" على حاسوبك يتحدث معك من خلاله، ويقرأ صفحات الـ PDF، ويُنشئ ملفات الكتاب. البرنامج الرسمي المعتمد والأسهل هو <strong>Google Antigravity</strong> (برنامج مجاني ومستقل لسطح المكتب تطوره جوجل):</p>
+            
+            <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin: 14px 0;">
+              <h4 style="color: var(--primary-dark); font-size: 1.05rem; margin-bottom: 10px;">📥 خطوات التحميل والتثبيت على ويندوز في 3 دقائق:</h4>
+              <ol style="margin-right: 20px; line-height: 1.9;">
+                <li><strong>تحميل البرنامج:</strong> اذهب للموقع الرسمي: <a href="https://antigravity.google/" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">https://antigravity.google/</a> واضغط على زر التحميل لويندوز (<strong>Download for Windows</strong>).</li>
+                <li><strong>التثبيت العادي:</strong> بعد اكتمال التحميل، افتح الملف الذي نزل واضغط <em>Next</em> ثم <em>Install</em> كأي برنامج عادي تماماً على ويندوز.</li>
+                <li><strong>تسجيل الدخول:</strong> عند فتح البرنامج لأول مرة، اضغط على <strong>Sign in with Google</strong> وسجل دخولك بحساب جوجل العادي الخاص بك في المتصفح.</li>
+                <li><strong>فتح مجلد الكتاب:</strong> من القائمة العلوية للبرنامج، اضغط على: <br>
+                  <code style="background: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-weight: bold;">File ➔ Open Folder...</code> <br>
+                  ثم اختر مجلد <code>Book_Conversion</code> الموجود على سطح المكتب (الذي وضعنا فيه ملف كتاب الـ PDF).</li>
+                <li><strong>نافذة المحادثة جاهزة:</strong> ستفتح لك لوحة المحادثة (Chat) بجوار ملفات المجلد، وكل ما عليك الآن هو لصق البرومبت الذهبي هناك!</li>
+              </ol>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-muted);">
+              *(ملحوظة للمستخدمين المتقدمين: إذا كنت تفضل استخدام سطر الأوامر، يمكنك تشغيل أداة <code>agy</code> في التيرمينال أو أداة <code>Claude Code</code>، وكلاهما مدعوم بنفس الكفاءة).*
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SUBSCRIPTIONS & LIMITS -->
+    <section id="subscriptions-and-limits" class="card">
+      <div class="section-title">
+        <div class="icon-box">💳</div>
+        <h2>ثالثاً: هل تحتاج لاشتراك مدفوع؟ التجربة المجانية والاشتراكات والحدود (Limits)</h2>
+      </div>
+
+      <p>لا تحتاج لتعقيدات مفاتيح برمجية أو إعدادات صعبة! الأمر بسيط جداً ومثل أي اشتراك تشتريه لهاتفك. سنشرح لك هنا كيف تبدأ مجاناً، وما هي الاشتراكات المدفوعة (Pro / Plus)، وكم كتاباً يستطيع كل اشتراك إنجازه شهرياً بالتفصيل:</p>
+
+      <!-- Free Trial Box -->
+      <div class="metaphor-box" style="background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%); border-color: #a7f3d0;">
+        <div class="metaphor-title" style="color: #065f46;">
+          <span>🎁 الخيار المجاني (للتجربة بدون دفع أي شيء)</span>
+        </div>
+        <p>إذا كنت تريد تجربة الأداة لأول مرة للتأكد من أنها تعمل على حاسوبك، يمكنك البدء <strong>بالحساب المجاني العادي تماماً</strong> دون الحاجة لبطاقة بنكية. يمنحك الحساب المجاني رصيداً كافياً لتحويل <strong>فصل كامل أو كتيب صغير (من 15 إلى 25 صفحة)</strong> لتلمس الإبهار بنفسك وترى الحواشي المنبثقة وتنسيق الخطوط على هاتفك قبل أن تدفع قرشاً واحداً!</p>
+      </div>
+
+      <!-- What is Limit Explanation -->
+      <div class="metaphor-box">
+        <div class="metaphor-title">
+          <span>⛽ ما هو "الحد / الليمت" (Limit) ببساطة؟</span>
+        </div>
+        <p>تخيل "الحد الأسبوعي أو اليومي" مثل <strong>باقة بنزين السيارة أو باقة الجيجابايت في هاتفك</strong>. لأن الذكاء الاصطناعي يقوم بعمل جبار (قراءة صور الصفحات كلمة بكلمة وإعادة بنائها وتدقيقها)، فإن كل حزمة (20 صفحة) تستهلك جزءاً صغيراً من باقتك. وبعد انتهاء الباقة المخصصة لفترة معينة، ينتظر النظام قليلاً حتى تتجدد الباقة تلقائياً.</p>
+      </div>
+
+      <!-- Comparison Table for Subscriptions -->
+      <h3 style="margin: 28px 0 14px; font-size: 1.2rem; color: var(--text-main);">📊 مقارنة الاشتراكات: الأسعار، واستهلاك الكتاب، والقدرة الشهرية</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">* الحسابات مبنية على كتاب عربي متوسط الحجم (حوالي 200 إلى 250 صفحة) يُعالج بنظام الحزم الآمنة (20 صفحة لكل حزمة):</p>
+
+      <div style="overflow-x: auto;">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>الاشتراك / الخدمة</th>
+              <th>السعر التقريبي</th>
+              <th>استهلاك الكتاب الواحد من باقتك الأسبوعية</th>
+              <th>كم كتاباً يكفي شهرياً؟</th>
+              <th>التقييم وأفضل استخدام</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Google One AI Premium</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">(Gemini Advanced / AI Pro)</span>
+              </td>
+              <td><strong>~20$ شهرياً</strong><br><span style="font-size: 0.8rem; color: #059669;">(غالباً أول شهر مجاني للتجربة)</span></td>
+              <td><span style="background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 6px; font-weight: bold;">~15% فقط للكتاب الواحد</span><br><span style="font-size: 0.8rem; color: #15803d;">(أي 5 إلى 6 كتب أسبوعياً)</span></td>
+              <td><strong style="color: #047857; font-size: 1.1rem;">20 إلى 25 كتاباً كاملاً</strong> شهرياً!</td>
+              <td>⭐ <strong>الوحش الإنتاجي الخارق (الأوفر إطلاقاً):</strong> مجرب عملياً؛ تكلفة تحويل الكتاب الواحد تصبح <strong>أقل من دولار واحد</strong> (حوالي 80 سنتاً)! استيعاب هائل وسرعة فائقة.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>ChatGPT Plus</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">(OpenAI - GPT-4o)</span>
+              </td>
+              <td><strong>20$ شهرياً</strong></td>
+              <td><span style="background: #e0e7ff; color: #3730a3; padding: 3px 8px; border-radius: 6px; font-weight: bold;">~25% للكتاب الواحد</span><br><span style="font-size: 0.8rem; color: #4338ca;">(أي 3 إلى 4 كتب أسبوعياً)</span></td>
+              <td><strong>12 إلى 16 كتاباً كاملاً</strong> شهرياً</td>
+              <td>⭐ <strong>متوازن وسهل:</strong> ممتاز وشائع جداً، حدوده تتجدد كل 3 ساعات، ويكفي لتحويل مكتبة صغيرة كاملة كل شهر.</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Claude Pro</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">(Anthropic - Claude Code)</span>
+              </td>
+              <td><strong>20$ شهرياً</strong></td>
+              <td><span style="background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; font-weight: bold;">~30% إلى 35% للكتاب</span><br><span style="font-size: 0.8rem; color: #b45309;">(أي كتابان إلى 3 كتب أسبوعياً)</span></td>
+              <td><strong>8 إلى 12 كتاباً كاملاً</strong> شهرياً</td>
+              <td>⭐ <strong>الأعلى بلاغة وتدقيقاً:</strong> دقة مذهلة في تفكيك المتون والشعر الصعب، لكنه يطبق حداً صارماً لكل 5 ساعات (يحتاج توزيع الكتاب الواحد على يومين بمعدل حزمتين كل 5 ساعات).</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>الحساب المجاني العادي</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">(بدون أي دفع)</span>
+              </td>
+              <td><strong>0$ (مجاناً)</strong></td>
+              <td>يستهلك رصيد التجربة اليومي</td>
+              <td><strong>فصل تجريبي واحد</strong> (15 - 25 صفحة)</td>
+              <td>🎯 <strong>للتجربة والاختبار فقط:</strong> ممتاز لتتأكد من أن الأداة تعمل بكفاءة على جهازك وتختبر أول فصل على كيندل قبل الاشتراك.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tips for saving limits -->
+      <div class="alert alert-info">
+        <div class="alert-icon">💡</div>
+        <div>
+          <strong>نصائح ذهبية لإدارة استهلاكك بذكاء حتى لا يتوقف المساعد:</strong>
+          <ul style="margin: 6px 18px 0; line-height: 1.8;">
+            <li><strong>نظام الحزم الذكي:</strong> لا تطلب من المساعد قراءة كتاب كامل من 300 صفحة في أمر واحد! التزم بالبرومبت الذهبي الذي يقسم الكتاب إلى حزم (20 صفحة في المرة الواحدة).</li>
+            <li><strong>لا شيء يضيع إطلاقاً:</strong> المساعد يحفظ إنجازه بعد كل حزمة مباشرة ويحدث ملف <code>in_progress.epub</code>. إذا ظهرت لك رسالة أنك وصلت لحد الاستخدام المؤقت (مثل انتهاء حصة الـ 5 ساعات في كلود)، فقط اترك الحاسوب يستريح واستأنف العمل لاحقاً بقولك: <em>«استأنف العمل من الحزمة التالية»</em>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FOLDER & SKILL SETUP -->
+    <section id="folder-setup" class="card">
+      <div class="section-title">
+        <div class="icon-box">📁</div>
+        <h2>رابعاً: تجهيز مجلد الكتاب وملف المهارة (بنقرة واحدة!)</h2>
+      </div>
+
+      <p>الآن سننشئ "مكتب العمل" الذي سيعمل فيه الوكيل الذكي. بدلاً من إنشاء المجلدات يدوياً، جهزنا لك طريقتين:</p>
+
+      <div class="download-card">
+        <div>
+          <h3 style="color: var(--accent-gold-dark); font-size: 1.15rem; margin-bottom: 4px;">🚀 الطريقة السحرية السريعة (سكريبت الإعداد الفوري لويندوز)</h3>
+          <p style="font-size: 0.92rem; color: #78350f;">ينشئ لك مجلد <code>Book_Conversion</code> على سطح المكتب، ويضع داخله ملف المهارة التلقائي ويجهز البيئة فوراً!</p>
+        </div>
+        <button class="prompt-copy-btn-large" onclick="downloadSetupScript()" style="font-size: 0.95rem; padding: 10px 20px;">
+          ⬇️ تحميل سكريبت التجهيز التلقائي (setup.bat)
+        </button>
+      </div>
+
+      <h3 style="margin: 24px 0 12px; font-size: 1.15rem;">أو افعلها بنفسك بخطوات بسيطة:</h3>
+      <ol style="margin-right: 22px; line-height: 2;">
+        <li>أنشئ مجلداً جديداً على سطح المكتب وسمه مثلاً: <code>MyBook</code>.</li>
+        <li>انسخ ملف كتاب الـ PDF المراد تحويله وضعه داخل هذا المجلد.</li>
+        <li>داخل مجلد <code>MyBook</code>، أنشئ مجلداً اسمه <code>.agents</code> وبداخله مجلد <code>skills</code> وبداخله مجلد <code>arabic-pdf-to-epub</code>.</li>
+        <li>داخل هذا المجلد الأخير، أنشئ ملفاً نصياً اسمه <code>SKILL.md</code>، والصق بداخله محتوى المهارة التالي:</li>
+      </ol>
+
+      <div class="code-block arabic-text" style="max-height: 250px;">
+        <div class="code-header">
+          <span class="code-tag">ملف المهارة: .agents/skills/arabic-pdf-to-epub/SKILL.md</span>
+          <button class="copy-btn" onclick="copyText('skillCode')">نسخ ملف المهارة بالكامل</button>
+        </div>
+        <pre id="skillCode" style="font-family: inherit; font-size: 0.88rem; color: #cbd5e1;">---
+name: arabic-pdf-to-epub
+description: Autonomous end-to-end converter for Arabic PDF books into Kindle-ready EPUB3 ebooks. Performs native visual OCR, page typology classification, Arabic proofreading, Quranic verse verification, interactive footnotes linking, and RTL EPUB packaging without external API keys.
+---
+
+# Arabic PDF to Kindle EPUB3 Converter
+
+Converts scanned and digital Arabic book PDFs into high-quality, reflowable, Kindle-optimized EPUB3 ebooks.
+- Table-based hierarchical tree diagrams for Kindle e-ink stability.
+- Kindle interactive popup footnotes: `<a href="#fnX" id="refX" epub:type="noteref">` and `<aside id="fnX" epub:type="footnote">`. STRICTLY NO `page-break-before: always` on footnotes section.
+- Quranic verses with Tashkeel in `﴿...﴾`, with Rub El Hizb `۞` as verse separator. NEVER use `۝`.
+- Fluid reflowable text with NO boundary word duplication.
+- OPF spine with NO `page-progression-direction="rtl"` (prevents reverse chapter opening in Kindle/Apple Books).
+- Sequential single-subagent execution: 15-25 pages per batch with ETA and metrics reporting.</pre>
+      </div>
+    </section>
+
+    <!-- SECTION 5: MASTER PROMPT -->
+    <section id="master-prompt" class="card">
+      <div class="section-title">
+        <div class="icon-box">✨</div>
+        <h2>خامساً: «البرومبت الذهبي الخارق» لبدء التحويل والمراجعة</h2>
+      </div>
+
+      <p>هذا هو <strong>السر الحقيقي</strong> لنجاح المشروع! قمنا بصياغة هذا البرومبت وتضمينه <strong>كافة الدروس المستفادة والحلول الجذرية لجميع المشاكل السابقة</strong> التي واجهتنا في جلسات العمل (مشاكل كيندل، الحواشي التي تظهر كصفحة منفصلة، خطأ فتح الفصول بالعكس، انهيار المشجرات، وتداخل الحروف القرآنية). كل ما عليك هو نسخه ولصقه في محادثة الوكيل الذكي:</p>
+
+      <div class="prompt-hero">
+        <div class="prompt-hero-header">
+          <div class="prompt-badge">
+            <span>🛡️ محصّن بجميع قواعد وضوابط كيندل المعتمدة</span>
+          </div>
+          <button class="prompt-copy-btn-large" onclick="copyMasterPrompt(this)">
+            📋 نسخ البرومبت الذهبي بالكامل (نقرة واحدة)
+          </button>
+        </div>
+
+        <div class="code-block arabic-text" style="background: rgba(15, 23, 42, 0.7); border-color: #4338ca; max-height: 480px; overflow-y: auto;">
+          <pre id="masterPromptText" style="font-family: inherit; font-size: 0.95rem; color: #e2e8f0; line-height: 2;">السلام عليكم يا مساعدي العزيز. أريدك أن تبدأ فوراً في تحويل كتاب الـ PDF الموجود في هذا المجلد إلى كتاب كيندل إلكتروني احترافي سائل (EPUB3) عالي الجودة، باستخدام مهارة `arabic-pdf-to-epub`، مع الالتزام الصارم والدقيق بالقواعد الهندسية التالية التي تم اعتمادها واختبارها لمنع أي أخطاء:
+
+1. 📱 هندسة الحواشي التفاعلية المنبثقة لكيندل (Kindle Popup Footnotes):
+   - في المتن: استخدم حصراً الرابط المرتفع: `<a href="#fn1" id="ref1" class="footnote-ref" epub:type="noteref">(١)</a>`.
+   - في نهاية كل ملف فصل: ضع نصوص الحواشي داخل:
+     `<div class="footnotes-section"><aside id="fn1" class="footnote-item" epub:type="footnote"><p><a href="#ref1">(١)</a> نص الحاشية...</p></aside></div>`
+   - ممنوع منعاً باتاً وضع `page-break-before: always;` على الحواشي؛ لأن ذلك يجبر كيندل على إنشاء صفحة بيضاء معزولة تظهر فيها الحواشي كنص خام! الحواشي يجب أن تتدفق في قاع الفصل خلف خط فاصل خفيف.
+   - ممنوع إضافة عناوين إضافية مبتكرة مثل «الهوامش والتعليقات:» فوق الحواشي.
+   - الربط يجب أن يكون ثنائياً (للأمام `#fnX` وللخلف `#refX`)، مع إعادة تصفير الترقيم ليبدأ من `(١)` في بداية كل فصل جديد.
+
+2. 📊 المشجرات والتفريعات الهيكلية الصامدة في كيندل (Table-based Trees):
+   - إياك واستخدام Flexbox أو Grid للمشجرات؛ لأنها تنهار في شاشات كيندل إلى قوائم رأسية قبيحة!
+   - إياك وتضمين رسوميات Inline SVG مع نصوص عربية لأن محرك كيندل يسقطها وتظهر الصفحة بيضاء فارغة!
+   - المعيار المعتمد والمجرب هو بناء المشجرات عبر جداول HTML هيكلية (`tree-table-wrap` مع خلايا جدول `tree-table` وتوصيلات CSS)، أو استخراجها كصور واضحة مؤطرة ومستقلة تدعم التكبير باللمس.
+
+3. 📖 الآيات القرآنية والأحاديث والشعر:
+   - اكتب الآيات بالرسم العثماني المضبوط بالشكل كاملاً داخل `<span class="quran-text">﴿...﴾</span>` مع اسم السورة ورقم الآية.
+   - فاصل الآيات: ممنوع نهائياً استخدام رمز نهاية الآية `۝` (U+06DD) لأنه يسبب تداخلاً وتشويهاً للحروف في كيندل. استخدم حصراً النجمة الإسلامية المثمنة الآمنة ` ۞ ` (Rub El Hizb U+06DE) أو الأقواس التزيينية.
+   - الأحاديث النبوية توضع بين علامات الاقتباس الخاصة: `«...»`.
+   - الشعر يقسم بدقة إلى صدر وعجز متوازنين (`poetry-sadr` و `poetry-ajuz`).
+
+4. 🔄 اتجاه الكتاب وحل خطأ فتح الفصول بالعكس (Spine Bug):
+   - في ملف `content.opf`، اترك العمود الفقري قياسياً: `<spine toc="ncx">` وتجنب وضع `page-progression-direction="rtl"` على وسم الـ spine؛ لأن ذلك يسبب فتح كل فصل من صفحته الأخيرة على كيندل وتطبيق أبل!
+   - الاتجاه العربي يضبط حصراً عبر `dir="rtl"` في وسم `<html>` والـ CSS في الـ body.
+
+5. 🌊 انسيابية المتن ومنع التكرار (Fluid Reflowable Text):
+   - النص يجب أن يكون متصلاً وسلسلاً بدون أي تقطيع اصطناعي أو فواصل صفحات بين أوراق الـ PDF الأصلية، وبدون تكرار أي كلمات عند أطراف الصفحات.
+   - حافظ على الكلمات المكتوبة بخط عريض (Bold) في الأصل باستخدام `<strong>...</strong>`.
+   - التزم بالتطابق الهيكلي 1:1 في خطط وفهارس الكتاب ولا تختصر الأبواب أو تدمج الفصول في فواصل أفقية.
+
+6. ⏱️ إدارة الحزم وتتبع الوقت والإنجاز (Batching & ETA):
+   - اعمل بنظام الحزم الآمنة: من 15 إلى 25 صفحة لكل حزمة عبر وكيل فرعي واحد متتابع (Sequential Subagent) لتجنب انقطاع التوكن وأخطاء 401.
+   - بعد انتهاء كل حزمة، حدّث فوراً ملف الكتاب المؤقت `in_progress.epub` حتى أتمكن من فتحه وقراءته على هاتفي.
+   - قدم لي في نهاية كل حزمة بطاقة إحصائيات تحتوي على: (الوقت المستغرق في الحزمة، عدد الصفحات والحزم المكتملة، الحزم المتبقية، ومتوسط سرعة الإنجاز والوقت التقديري المتبقي ETA).
+
+ابدأ الآن بفحص الكتاب وعرض خطتك وتوزيع الحزم وتوكل على الله!</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: HOW IT WORKS & PROGRESS -->
+    <section id="how-it-works" class="card">
+      <div class="section-title">
+        <div class="icon-box">⚙️</div>
+        <h2>سادساً: ماذا يحدث أثناء التحويل؟ وكيف تتابع العمل؟</h2>
+      </div>
+
+      <p>بمجرد لصق البرومبت، سيقوم المساعد الذكي بالعمل تلقائياً. إليك ما يجب أن تتوقعه خطوة بخطوة حتى تطمئن:</p>
+
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>المعاينة وتقسيم الكتاب (أول 3 دقائق)</h3>
+            <p>سيقوم المساعد بقراءة غلاف الكتاب، وفهرس المحتويات، ويحدد عدد الصفحات، ويخبرك بعدد الحزم المطلوبة (مثلاً: <em>«الكتاب 200 صفحة، سنقسمه إلى 10 حزم آمنة، كل حزمة 20 صفحة»</em>).</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>المعالجة حزمة تلو الأخرى وتحديث الكتاب المؤقت</h3>
+            <p>يبدأ بقراءة الصفحات، وتفريغ النصوص، وضبط الحواشي والآيات. وبمجرد انتهاء الحزمة الأولى، ستجد أنه أنشأ ملفاً اسمه <code>in_progress.epub</code> داخل مجلد الكتاب!</p>
+            <div class="alert alert-success" style="margin: 10px 0;">
+              <div class="alert-icon">📱</div>
+              <div>
+                <strong>ميزة رائعة:</strong> لست مضطراً لانتظار نهاية الكتاب كله! يمكنك فتح ملف <code>in_progress.epub</code> في أي وقت في برنامج القراءة على هاتفك أو حاسوبك لتجربة القراءة والتأكد من جمال الخط والحواشي التفاعلية بينما يواصل البرنامج عمله.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>بطاقة الإحصائيات وتقدير الوقت المتبقي (ETA)</h3>
+            <p>بعد كل حزمة، يطبع لك المساعد بطاقة إنجاز واضحة مثل هذه تماماً:</p>
+            <table class="styled-table">
+              <tr>
+                <th>المؤشر</th>
+                <th>القيمة التقريبية</th>
+              </tr>
+              <tr>
+                <td>⏱️ وقت الحزمة الأخيرة:</td>
+                <td><strong>8 دقائق و 15 ثانية</strong></td>
+              </tr>
+              <tr>
+                <td>📦 الحزم المكتملة:</td>
+                <td><strong>3 من أصل 10 حزم (60 صفحة تم إنجازها)</strong></td>
+              </tr>
+              <tr>
+                <td>⏳ الوقت المتوقع لانتهاء الكتاب بالكامل (ETA):</td>
+                <td><strong>حوالي 55 دقيقة</strong></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>توضيح الفرق بين صفحة المراجعة (review.html) وملف الكتاب النهائي (epub)</h3>
+            <p>إذا أنشأ المساعد صفحة اسمها <code>review.html</code> لتدقيق الصفحات، فاعلم ما يلي:</p>
+            <ul style="margin: 8px 24px;">
+              <li><strong>صفحة review.html:</strong> مخصصة للمقارنة البصرية بالعين فقط، تعرض كل صفحة PDF بجوار تفريغها للتأكد من عدم سقوط كلمات.</li>
+              <li><strong>ملف الكتاب النهائي (.epub):</strong> هو الكتاب الحقيقي السائل المتصل الذي تفتحه على كيندل، ولا توجد به أي تقطيعات أو بطاقات صفحة بصفحة، بل نص متدفق كالأنهار وحواشٍ تفتح بنقرة لمسية!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">5</div>
+          <div class="step-content" style="background: linear-gradient(135deg, #fdfbf7 0%, #fffbeb 100%); border-color: #fde68a;">
+            <h3 style="color: var(--accent-gold-dark);">💬 تحدث معه بطبيعتك وارفع صوراً بالأخطاء (كأنه مبرمج ومحول كتب جالس معك!)</h3>
+            <p>أعظم ميزة في هذا الوكيل الذكي هي أنك <strong>لا تحتاج لكتابة أي أوامر برمجية أو لغة إنجليزية</strong>. تحدث معه تماماً كما تتحدث مع صديقك على الواتساب أو مبرمج محترف جالس بجوارك على نفس المكتب:</p>
+            
+            <div style="margin: 14px 0;">
+              <h4 style="font-size: 1rem; color: #92400e; margin-bottom: 6px;">🗣️ يمكنك التعديل وإبداء الملاحظات في أي لحظة أثناء العمل:</h4>
+              <ul style="margin: 6px 20px; line-height: 1.9;">
+                <li><em>«يا باشا كبّر الخط شوية في ملفات الفصول عشان القراءة تكون أوضح على شاشات كيندل الصغيرة.»</em></li>
+                <li><em>«لون العناوين خليه باللون الكحلي الداكن أو البني التراثي بدلاً من الأسود العادي.»</em></li>
+                <li><em>«في صفحة ٤٥ المشجر نازل كلامه متداخل، عدله واجعله منسقاً وواضحاً.»</em></li>
+              </ul>
+            </div>
+
+            <div class="alert alert-info" style="margin: 12px 0;">
+              <div class="alert-icon">📸</div>
+              <div>
+                <strong>التقط صورة بكاميرا الهاتف أو لقطة شاشة (Screenshot) وارفعها له فوراً:</strong><br>
+                إذا فتحت ملف <code>in_progress.epub</code> على هاتفك أو حاسوبك ورأيت أي شيء غير مظبوط (مثلاً: حاشية ملتصقة، أو تشكيل كلمة في آية، أو جدول يحتاج تحسيناً)، لا تتعب نفسك في الشرح بالكلام! فقط <strong>التقط صورة للشاشة بيدك والصقها في المحادثة مباشرة</strong> وقل له:<br>
+                <em style="color: #1e40af; font-weight: bold;">«شوف الصورة دي، التنسيق هنا مش عاجبني، عدله فوراً ليطابق ما في بالي»</em>.<br>
+                الوكيل يمتلك عيوناً بصرية رقمية ذكية (Vision)؛ يرى لقطة شاشتك ويفهم المشكلة فوراً ويعالج ملفات الكتاب برمجياً في ثوانٍ معدودة دون أن تبذل أي مجهود!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: SEND TO KINDLE -->
+    <section id="send-to-kindle" class="card">
+      <div class="section-title">
+        <div class="icon-box">📲</div>
+        <h2>سابعاً: انتهى الكتاب! كيف تنقله وتقرأه على كيندل والهاتف؟</h2>
+      </div>
+
+      <p>مبروك! أصبح لديك ملف كتاب بصيغة <code>.epub</code> احترافي جاهز للنشر والقراءة. لنقله لجهاز كيندل:</p>
+
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">A</div>
+          <div class="step-content">
+            <h3>الطريقة الأولى: موقع Send to Kindle الرسمي (أسهل وأسرع طريقة)</h3>
+            <ol style="margin-right: 20px; line-height: 1.9;">
+              <li>افتح موقع أمازون الرسمي: <a href="https://www.amazon.com/sendtokindle" target="_blank" style="color: var(--primary); font-weight: bold;">Amazon Send to Kindle</a> وسجل دخولك بنفس حساب كيندل الخاص بك.</li>
+              <li>اسحب ملف الـ <code>.epub</code> وأفلته في الصفحة، ثم اضغط <strong>Send</strong>.</li>
+              <li>خلال دقيقة واحدة، ستجد الكتاب قد نزل تلقائياً على جهاز كيندل وهاتفك وتطبيق Kindle مع مزامنة رقم الصفحة تلقائياً!</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">B</div>
+          <div class="step-content">
+            <h3>الطريقة الثانية: تطبيق Apple Books (على الآيفون والماك)</h3>
+            <p>أرسل الملف لنفسك عبر الواتساب أو تيليجرام أو AirDrop، واضغط على الملف واختر <strong>فتح في تطبيق الكتب (Apple Books)</strong>. ستستمتع بتجربة قراءة ساحرة تدعم الخطوط العربية الفاخرة والوضع الليلي وتكبير النصوص.</p>
+          </div>
+        </div>
+
+        <div class="step-item">
+          <div class="step-number">C</div>
+          <div class="step-content">
+            <h3>الطريقة الثالثة: على هواتف أندرويد والكمبيوتر</h3>
+            <p>يمكنك فتح الكتاب فوراً عبر أي قارئ كتب شهير مجاني مثل: <strong>ReadEra</strong> على أندرويد، أو تطبيق <strong>Calibre</strong> / <strong>Thorium Reader</strong> على ويندوز.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: FAQ & TROUBLESHOOTING -->
+    <section id="faq" class="card">
+      <div class="section-title">
+        <div class="icon-box">❓</div>
+        <h2>ثامناً: الأسئلة الشائعة وحل أي مشكلة قد تواجهك</h2>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>ظهرت لي رسالة خطأ بالإنجليزية في شاشة الأوامر، ماذا أفعل؟</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          لا تقلق إطلاقاً! الذكاء الاصطناعي مبرمج لإصلاح نفسه. كل ما عليك هو نسخ سطر الخطأ بالكامل، ثم كتابة هذه العبارة للمساعد في المحادثة:<br>
+          <em style="color: var(--primary-dark); font-weight: bold;">«ظهر لي هذا الخطأ، من فضلك قم بحله ومتابعة العمل: [الصق الخطأ هنا]»</em><br>
+          وسيقوم الوكيل بتعديل الكود واستكمال العمل فوراً دون أي تدخل منك.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>انقطع اتصال الإنترنت أو أغلقت البرنامج بالخطأ أثناء التحويل، هل ضاع ما تم إنجازه؟</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <strong>أبداً!</strong> البرنامج يحفظ كل حزمة وكل فصل يتم الانتهاء منه في ملفات مستقلة فوراً. عندما تعيد فتح البرنامج، فقط اكتب له:<br>
+          <em style="color: var(--primary-dark); font-weight: bold;">«من فضلك افحص الملفات المكتملة حتى الآن، واستأنف العمل من الحزمة التالية مباشرة»</em>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>ظهر لي خطأ: 'python' is not recognized as an internal or external command</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          هذا يعني أنك قمت بتثبيت بايثون دون تفعيل علامة الصح الشهيرة <code>Add python.exe to PATH</code>. الحل بسيط جداً: أعد فتح ملف تثبيت بايثون الذي قمت بتحميله، واختر <strong>Modify</strong> ثم تأكد من تفعيل هذا الخيار وأكمل التثبيت.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>هل يمكنني تحويل كتب كبيرة الحجم (أكثر من 500 صفحة)؟</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          نعم وبكل سهولة! لأن المهارة مصممة خصيصاً بنظام "الحزم المتتابعة" (Sequential Batches)، حيث يعالج المساعد 20 صفحة في كل مرة، مما يضمن عدم نفاد الذاكرة أو انقطاع الاتصال مهما كان حجم الكتاب كبيراً.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>لماذا فواصل الآيات القرآنية تظهر بنجمة ۞ بدلاً من رمز المصحف ۝؟</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          رمز نهاية الآية <code>۝</code> في المصحف هو علامة دمجية (Enclosing Mark). في أجهزة كيندل، يتسبب هذا الرمز في خطأ برمجي شهير يجعل الحرف العربي يلتصق بما قبله ويتداخل الكلام مشوهاً. لذلك اعتمدنا النجمة الإسلامية المثمنة التزيينية <code> ۞ </code> أو الأقواس التزيينية التي تظهر فائقة الأناقة والوضوح على كافة أجهزة كيندل وأبل بوكس دون أي تداخل.
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>تم إعداد وتطوير هذا الدليل الشامل استناداً إلى خبرات وتجارب تحويل أمهات الكتب العربية التراثية والحديثة إلى كتب كيندل التفاعلية EPUB3.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">مشروع تحويل الكتب العربية © 2026</p>
+    </footer>
+  </div>
+
+  <!-- Scripts for Interactivity -->
+  <script>
+    // Copy code snippet
+    function copyCode(btn) {
+      const codeBlock = btn.closest('.code-block').querySelector('code');
+      const text = codeBlock.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = '✓ تم النسخ!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    // Copy text by element id
+    function copyText(elementId) {
+      const el = document.getElementById(elementId);
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('تم نسخ المحتوى بنجاح إلى الحافظة!');
+      });
+    }
+
+    // Copy Master Prompt
+    function copyMasterPrompt(btn) {
+      const text = document.getElementById('masterPromptText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '✓ تم نسخ البرومبت بنجاح! الصقه الآن للمساعد';
+        btn.style.background = '#047857';
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.style.background = '';
+        }, 3000);
+      });
+    }
+
+    // Toggle FAQ
+    function toggleFaq(el) {
+      const parent = el.closest('.faq-item');
+      parent.classList.toggle('active');
+    }
+
+    // Download Setup .bat Script for Windows users
+    function downloadSetupScript() {
+      const batContent = `@echo off
+chcp 65001 > nul
+echo ===================================================
+echo   تجهيز مجلد تحويل الكتب العربية لكيندل (EPUB3)
+echo ===================================================
+echo.
+
+set "TARGET_DIR=%USERPROFILE%\\Desktop\\Book_Conversion"
+echo [1/3] جاري انشاء مجلد العمل على سطح المكتب: %TARGET_DIR%
+mkdir "%TARGET_DIR%" 2>nul
+mkdir "%TARGET_DIR%\\.agents\\skills\\arabic-pdf-to-epub" 2>nul
+
+echo [2/3] جاري فحص لغة بايثون...
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [تنبيه] لم يتم العثور على بايثون. يرجى تحميله وتثبيته مع تفعيل Add to PATH.
+) else (
+    echo [ممتاز] بايثون مثبت وجاهز للعمل!
+)
+
+echo [3/3] جاري تجهيز بيئة العمل...
+echo ضع ملف كتاب الـ PDF الخاص بك داخل مجلد Book_Conversion على سطح المكتب.
+echo.
+echo ===================================================
+echo   تم تجهيز المجلد بنجاح! افتح المجلد وضعه هناك.
+echo ===================================================
+pause
+`;
+      const blob = new Blob([batContent], { type: 'application/bat;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'setup_book_converter.bat';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
